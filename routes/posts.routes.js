@@ -1,6 +1,8 @@
 const express = require("express");
 const Post = require("../models/Post.model");
 const router = express.Router();
+const { isLoggedIn, isLoggedOut } = require('../middleware/path.guard')
+const User = require('../models/User.model')
 
 //Gallery Page
 //need to get all the posts with findAll
@@ -15,15 +17,14 @@ router.get("/gallery", (req, res) => {
 //Post Details page, needs req.params to show specific post
 
 
-router.get("/add-post/create", (req, res) => {
+router.get("/add-post/create", isLoggedIn, (req, res) => {
   res.render("user/add-post");
 });
 
 router.post("/add-post/create", (req, res) => {
-  const { title, artist, artistLink, imageUrl } = req.body;
-  Post.create({ title, artist, artistLink, imageUrl })
+  const { title, artist, artistLink, imageUrl, user } = req.body;
+  Post.create({ title, artist, artistLink, imageUrl, user:req.session.currentUser._id})
     .then((postFromDb) => {
-      console.log("New post being created: ", postFromDb.title);
       res.redirect("/user-profile");
     })
     .catch((err) => console.log(`Whoops! There is an error ${err}`));
@@ -38,7 +39,7 @@ router.get("/post/:postId", (req, res) => {
     .catch((err) => console.log(`This is a post-detail error: ${err}`));
 });
 
-router.get("/post/:postId/edit", (req, res) => {
+router.get("/post/:postId/edit", isLoggedIn, (req, res) => {
   const { postId } = req.params;
   Post.findById(postId)
     .then((post) => {

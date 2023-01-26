@@ -4,8 +4,9 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs')
 const User = require('../models/User.model')
 const saltRounds = 10
+const { isLoggedIn, isLoggedOut } = require('../middleware/path.guard')
 
-router.get('/signup', (req,res)=> {
+router.get('/signup', isLoggedOut, (req,res)=> {
     res.render('auth/signup');
 })
 
@@ -53,7 +54,7 @@ router.post('/signup', (req,res) => {
     })
 
 
-router.get('/login', (req,res) => {
+router.get('/login', isLoggedOut, (req,res) => {
     res.render('auth/login');
 })
 

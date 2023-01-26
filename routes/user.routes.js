@@ -4,6 +4,7 @@ const router = express.Router();
 
 
 router.get('/user-profile', (req,res) => {
+    console.log(req.session.currentUser)
     res.render('user/user-profile')
     
 })
@@ -28,7 +29,6 @@ router.post('/edit/:postId/delete',(req,res) => {
     //findAndDelete 
     res.redirect('/user-profile')
 })
-
 
 
 

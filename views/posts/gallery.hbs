@@ -1,0 +1,12 @@
+<h1>Gallery!</h1>
+<div>
+{{#each allPosts}}
+<div>
+    <img src="{{imageUrl}}" alt="image-alt-text">
+    <p>Title: {{title}}</p>
+    <p>Artist: <a href="{{artistLink}}">{{artist}}</a></p>
+    <p>User: {{user}}</p>
+    <a href="/post/{{_id}}">Post Detail</a>
+</div>
+{{/each}}
+</div>

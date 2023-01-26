@@ -1,0 +1,10 @@
+<div>
+    <img src="{{postToEdit.imageUrl}}" alt="image-alt-text">
+    <p>Title: {{title}}</p>
+    <p>Artist: <a href="{{artistLink}}">{{artist}}</a></p>
+    <p>User: {{user}}</p>
+    <a href="/post/{{_id}}/edit">Edit Post</a>
+    <form action="/post/{{_id}}/delete" method="POST">
+    <button type="submit">Delete Post</button>
+    </form>
+</div>

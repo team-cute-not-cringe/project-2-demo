@@ -1,12 +1,22 @@
 <h1>Gallery!</h1>
 <div>
 {{#each allPosts}}
-<div>
+
+
+<div class="card user-posts gallery-posts" style="width: 45rem;">
+  <img src="{{imageUrl}}" class="card-img-top" alt="image-alt-text">
+  <div class="card-body">
+     <p>Title: {{title}}</p>
+     <p>Artist: <a href="{{artistLink}}">{{artist}}</a></p>
+    <a href="/post/{{_id}}" class="btn btn-primary">Post Detail</a>
+  </div>
+</div>
+{{!-- <div>
     <img src="{{imageUrl}}" alt="image-alt-text">
     <p>Title: {{title}}</p>
     <p>Artist: <a href="{{artistLink}}">{{artist}}</a></p>
     <p>User: {{user}}</p>
     <a href="/post/{{_id}}">Post Detail</a>
-</div>
+</div> --}}
 {{/each}}
 </div>

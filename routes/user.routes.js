@@ -1,20 +1,20 @@
 const express = require('express');
+const Post = require('../models/Post.model');
 const User = require('../models/User.model');
 const router = express.Router();
 
 
 router.get('/user-profile', (req,res) => {
     console.log(req.session.currentUser)
-    res.render('user/user-profile')
-    
+   
+    Post.find({user:req.session.currentUser._id})
+    .populate('user', 'username')
+    .then((allPosts) =>{
+        res.render('user/user-profile', {allPosts})
+    }
+    )
+    .catch(err => console.log('error finding user posts', err))
 })
-
-router.post('/logout', (req, res, next) => {
-    req.session.destroy(err => {
-      if (err) next(err);
-      res.redirect('/');
-    });
-  });
 
 //need req.params to find specific post 
 router.get('/edit/:postId', (req,res) => {

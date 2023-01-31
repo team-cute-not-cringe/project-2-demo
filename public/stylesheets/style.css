@@ -10,3 +10,46 @@ a {
 h1 {
   color: 15px;
 }
+.nav-bar {
+  display:flex;
+  justify-content: center;
+  flex-direction: row;
+  margin: 20px;
+  width: 100%;
+  
+}
+.nav-bar ul li{
+  float: left;
+  text-align: center;
+}
+#logo{
+  
+  height: 50px;
+  object-fit: contain;
+}
+nav a, nav ul {
+  text-decoration: none;
+  list-style-type:none;
+  margin: auto 20px;
+  
+}
+
+#nav-bar-div li
+a:hover {
+  color: #2E9AFE;
+  text-decoration: underline;
+}
+.user-posts img{
+  width: 30%;
+  
+  /* margin: 10px; */
+}
+.user-posts{
+  margin:15px;
+}
+.user-information{
+  float: right;
+}
+/* .gallery-posts{
+  
+} */

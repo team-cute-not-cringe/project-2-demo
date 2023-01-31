@@ -1,5 +1,34 @@
 <form action="/logout" method="POST">
-<button>Log Out</button>
+<button>Log Out</button> 
 </form>
-<a href="/add-post/create">Add Post</a>
 
+
+
+<div class="user-information">
+    <h3>Hello, {{username}}!</h3>
+    <a href="/add-post/create">Add Post</a>
+</div>
+
+
+{{#each allPosts}}
+
+<div class="card user-posts" style="width: 45rem;">
+  <img src="{{imageUrl}}" class="card-img-top" alt="image-alt-text">
+  <div class="card-body">
+     <p>Title: {{title}}</p>
+     <p>Artist: <a href="{{artistLink}}">{{artist}}</a></p>
+    <p class="card-text">User: <a href=""> {{user.username}}</a></p>
+    <a href="/post/{{_id}}" class="btn btn-primary">Post Detail</a>
+  </div>
+</div>
+{{!-- <div class="user-posts ">
+    <section>
+    <img src="{{imageUrl}}" alt="image-alt-text">
+    <p>Title: {{title}}</p>
+    <p>Artist: <a href="{{artistLink}}">{{artist}}</a></p>
+    <p>User: <a href=""> {{user.username}}</a></p>
+    <a href="/post/{{_id}}">Post Detail</a>
+</section>
+</div> --}}
+{{/each}}
+</div>

@@ -5,13 +5,11 @@
 
 
 <div class="user-information">
-    <h3>Hello, {{username}}!</h3>
+    <h3>Hello, {{username.username}}!</h3>
     <a href="/add-post/create">Add Post</a>
 </div>
 
-
-{{#each allPosts}}
-
+{{#each allPosts}} 
 <div class="card user-posts" style="width: 45rem;">
   <img src="{{imageUrl}}" class="card-img-top" alt="image-alt-text">
   <div class="card-body">
@@ -21,6 +19,8 @@
     <a href="/post/{{_id}}" class="btn btn-primary">Post Detail</a>
   </div>
 </div>
+{{/each}}
+
 {{!-- <div class="user-posts ">
     <section>
     <img src="{{imageUrl}}" alt="image-alt-text">
@@ -30,5 +30,5 @@
     <a href="/post/{{_id}}">Post Detail</a>
 </section>
 </div> --}}
-{{/each}}
+
 </div>

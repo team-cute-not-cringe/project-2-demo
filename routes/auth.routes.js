@@ -1,22 +1,24 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs')
-const User = require('../models/User.model')
-const saltRounds = 10
-const { isLoggedIn, isLoggedOut } = require('../middleware/path.guard')
+const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+const User = require("../models/User.model");
+const saltRounds = 10;
+const { isLoggedIn, isLoggedOut } = require("../middleware/path.guard");
 
-router.get('/signup', isLoggedOut, (req,res)=> {
-    res.render('auth/signup');
-})
+router.get("/signup", isLoggedOut, (req, res) => {
+  res.render("auth/signup");
+});
 
-router.post('/signup', (req,res) => {
-    const {username, password } = req.body
-    if(!username || !password){
-        res.render('auth/signup', {errorMessage:'Please fill required fields! Meow!'})
-        return 
-    }
-    const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+router.post("/signup", (req, res) => {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    res.render("auth/signup", {
+      errorMessage: "Please fill required fields! Meow!",
+    });
+    return;
+  }
+  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
   if (!regex.test(password)) {
     res.status(500).render("auth/signup", {
       errorMessage:
@@ -24,66 +26,60 @@ router.post('/signup', (req,res) => {
     });
     return;
   }
-    bcrypt
+  bcrypt
     .genSalt(saltRounds)
-    .then((salt)=> {
-        console.log('Salt', salt)
-       return bcrypt.hash(password, salt); //method that hashes/encrypts our password & takes two arguments, 1:password, 2:salt
+    .then((salt) => {
+      return bcrypt.hash(password, salt); //method that hashes/encrypts our password & takes two arguments, 1:password, 2:salt
     })
     .then((hashedPassword) => {
-        console.log("Hashed Password here:", hashedPassword);
-        // return
-    User.create({
-          username: username,
-          password: hashedPassword,
-        })})
-        .then(() => res.redirect("/user-profile"))
-        .catch((error) => {     
-               if (error instanceof mongoose.Error.ValidationError) {
-            res.status(500).render("auth/signup", { errorMessage: error.message });
-          } else if (error.code === 11000) {
-            res.render("auth/signup", {
-              errorMessage:
-                "Ooops! This Username is already in use! Choose another one! Woof!",
-            });
-          } else {
-            next(error);
-          }
-        }); 
-    
+      // return
+      User.create({
+        username: username,
+        password: hashedPassword,
+      });
     })
-
-
-router.get('/login', isLoggedOut, (req,res) => {
-    res.render('auth/login');
-})
-
-router.post('/login', (req,res) =>{
-    console.log('SESSION =====> ', req.session);
-    const {username, password } = req.body
-    User.findOne({ username })
-    .then((user) => {
-        if (!user) {
-          res.render("auth/login", {
-            errorMessage: "User not found. No account associated with email",
-          });
-        } else if (bcrypt.compareSync(password, user.password)) {
-        req.session.currentUser = user;
-          res.redirect("user-profile");
-        } else {
-          res.render("auth/login", { errorMessage: "incorrect password" });
-        }
-      });   
-    
-})
-
-router.post('/logout', (req, res, next) => {
-    req.session.destroy(err => {
-      if (err) next(err);
-      res.redirect('/');
+    .then(() => res.redirect("/")) //validation message: "Yay!You are signed in now"
+    .catch((error) => {
+      if (error instanceof mongoose.Error.ValidationError) {
+        res.status(500).render("auth/signup", { errorMessage: error.message });
+      } else if (error.code === 11000) {
+        res.render("auth/signup", {
+          errorMessage:
+            "Ooops! This Username is already in use! Choose another one! Woof!",
+        });
+      } else {
+        next(error);
+      }
     });
+});
+
+router.get("/login", isLoggedOut, (req, res) => {
+  res.render("auth/login");
+});
+
+router.post("/login", (req, res) => {
+  const { username, password } = req.body;
+  //add validation if user entered both username & password
+  User.findOne({ username }).then((user) => {
+    if (!user) {
+      res.render("auth/login", {
+        errorMessage: "User not found. No account associated with email",
+      });
+    } else if (bcrypt.compareSync(password, user.password)) {
+      req.session.currentUser = user.toObject();
+      delete req.session.currentUser.password
+      res.redirect(`/profile/${req.session.currentUser._id}`);
+    } else {
+      res.render("auth/login", { errorMessage: "incorrect password" });
+    }
   });
+});
 
-
+router.post("/logout", (req, res, next) => {
+  req.session.destroy((err) => {
+    if (err) next(err);
+    res.redirect("/");
+  });
+});
 
 module.exports = router;

@@ -1,11 +1,8 @@
-<form action="/logout" method="POST">
-<button>Log Out</button> 
-</form>
-
 
 
 <div class="user-information">
-    <h3>Hello, {{username.username}}!</h3>
+    <h3>Hello, {{userInSession.username}}!</h3>
+    <h5>It is {{username.username}}'s profile</h5>
     <a href="/add-post/create">Add Post</a>
 </div>
 

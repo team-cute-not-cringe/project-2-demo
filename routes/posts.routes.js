@@ -3,14 +3,17 @@ const Post = require("../models/Post.model");
 const router = express.Router();
 const { isLoggedIn, isLoggedOut } = require("../middleware/path.guard");
 const User = require("../models/User.model");
+const fileUploader = require('../config/cloudinary.config');
 
 //Gallery Page
 router.get("/gallery", (req, res) => {
+    // console.log('in the gallery')
+
   Post.find()
     .populate("user")
     .then((allPosts) => {
       res.render("posts/gallery", { allPosts });
-      console.log(allPosts);
+    //   console.log(allPosts);
     })
     .catch((err) => console.log(`There is an error on the gallery: ${err}`));
 });
@@ -21,16 +24,17 @@ router.get("/add-post/create", isLoggedIn, (req, res) => {
   res.render("user/add-post");
 });
 
-router.post("/add-post/create", (req, res) => {
+router.post("/add-post/create",fileUploader.single('animal-art-img'), (req, res) => {
   const { title, artist, artistLink, imageUrl, user } = req.body;
   Post.create({
     title,
     artist,
     artistLink,
-    imageUrl,
-    user: req.session.currentUser._id,
+    imageUrl: req.file.path,
+    user: req.session.currentUser._id
   })
     .then((postFromDb) => {
+        
       res.redirect(`/profile/${req.session.currentUser._id}`);
     })
     .catch((err) => console.log(`Whoops! There is an error ${err}`));
@@ -41,6 +45,10 @@ router.get("/post/:postId", (req, res) => {
   Post.findById(postId)
   .populate("user")
     .then((postToEdit) => {
+        if(req.session.currentUser.username === postToEdit.user.username){
+            postToEdit.owner = true
+
+        }
       res.render("posts/post-details", postToEdit);
     })
     .catch((err) => console.log(`This is a post-detail error: ${err}`));
@@ -55,7 +63,7 @@ router.get("/post/:postId/edit", isLoggedIn, (req, res) => {
     .catch((err) => console.log(`This is a post-detail error: ${err}`));
 });
 
-router.post("/post/:postId/edit", (req, res) => {
+router.post("/post/:postId/edit",fileUploader.single('animal-art-img'), (req, res) => {
   const { postId } = req.params;
   const { title, artist, artistLink, imageUrl } = req.body;
   Post.findByIdAndUpdate(
@@ -64,7 +72,8 @@ router.post("/post/:postId/edit", (req, res) => {
     { new: true }
   )
     .then((updatedPost) => {
-      console.log(updatedPost);
+    //   console.log(updatedPost);
+
       res.redirect(`/post/${updatedPost.id}`);
     })
     .catch((err) => console.log(`Oops! There is an update error: ${err}`));

@@ -17,7 +17,8 @@ const postSchema = new Schema({
   imageUrl: {
     type: String,
     required: true,
-  }, //=> cloudinary / online source,
+  },
+  owner:Boolean //=> cloudinary / online source,
 //   comments: [
 //     {
 //       message: String,

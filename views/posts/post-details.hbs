@@ -3,5 +3,9 @@
     <p>Title: {{title}}</p>
     <p>Artist: <a href="{{artistLink}}">{{artist}}</a></p>
     <p>User: <a href="/profile/{{user._id}}">{{user.username}}</a></p>
-    <a href="/post/{{_id}}/edit">Edit Post</a>
+    {{#if owner}}
+         <a href="/post/{{_id}}/edit">Edit Post</a>
+         
+    {{/if}}
+   
 </div>

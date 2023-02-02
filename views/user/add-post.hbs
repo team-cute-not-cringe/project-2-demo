@@ -1,16 +1,21 @@
-<form action="/add-post/create" method="POST">
+<form action="/add-post/create" method="POST" enctype="multipart/form-data">
 <label>
     Title: 
     <input type="text" name="title">
 </label>
+<br>
 <label>Artist: 
     <input type="text" name="artist">
 </label>
+<br>
 <label>Link to Artist: 
     <input type="url" name="artistLink">
 </label>
+<br>
 <label>Image Url: 
-    <input type="url" name="imageUrl">
+    <input type="file" name="animal-art-img" />
+    {{!-- <input type="url" name="imageUrl"> --}}
 </label>
+<br>
 <button type="submit">Create a Post</button>
 </form>

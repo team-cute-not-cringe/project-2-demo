@@ -4,18 +4,19 @@ const User = require("../models/User.model");
 const router = express.Router();
 
 router.get("/profile/:userId", (req, res) => {
-  const { userId } = req.params;
-  let userVar;
-  User.findById(userId).then((foundUser) => {
-    userVar = foundUser;
-  });
-  
-  Post.find({ user: userId })
-    .populate("user", "username")
+    console.log("user")
+    const { userId } = req.params;
+    let userVar;
+    User.findById(userId)
+        .then((foundUser) => {
+            userVar = foundUser;
+            return Post.find({ user: userId })
+                    .populate("user", "username")
+    })
     .then((allPosts) => {
-      console.log(allPosts);
+    //   console.log(allPosts);
       if (!allPosts) {
-        console.log(userVar)
+        // console.log(userVar)
         res.render("user/user-profile", userVar);
       }
       res.render("user/user-profile", { allPosts, username: userVar });

@@ -21,9 +21,9 @@ require('./config/session.config')(app);
 
 // default value for title local
 const capitalize = require("./utils/capitalize");
-const projectName = "project-2-demo";
+const projectName = "cute not cringe";
 //global object available to all pages 
-app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
+app.locals.appTitle = `${capitalize(projectName)} `;
 app.use((req, res, next) => {
     app.locals.userInSession = req.session.currentUser;
     next()

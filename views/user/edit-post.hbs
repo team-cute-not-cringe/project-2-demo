@@ -1,34 +1,34 @@
-<h2>Edit the post {{post.title}}</h2>
+<h2>Edit the post {{title}}</h2>
 
-<form action="/post/{{post._id}}/edit" method="post">
+<form action="/post/{{_id}}/edit" method="post">
   <label>
     Image Link:
     <input
       type="url"
-      value="{{post.imageUrl}}"
+      value="{{imageUrl}}"
     />
   </label>
   <label>
     Title:
-    <input type="text" name="title" value="{{post.title}}" />
+    <input type="text" name="title" value="{{title}}" />
   </label>
 
   <label>
     Artist:
-    <input type="text" name="artist" value="{{post.artist}}" />
+    <input type="text" name="artist" value="{{artist}}" />
   </label>
 
   <label>
     Link to Artist:
     <input
       name="artistLink"
-      value="{{post.artistLink}}"
+      value="{{artistLink}}"
     ></input>
   </label>
 
   <button type="submit">Save changes</button>
   
 </form>
-<form action="/post/{{post._id}}/delete" method="POST">
+<form action="/post/{{_id}}/delete" method="POST">
     <button type="submit">Delete Post</button>
 </form>

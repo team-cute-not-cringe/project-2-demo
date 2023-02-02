@@ -1,12 +1,9 @@
 <h2>Edit the post {{title}}</h2>
 
-<form action="/post/{{_id}}/edit" method="post">
+<form action="/post/{{_id}}/edit" method="post" enctype="multipart/form-data">
   <label>
     Image Link:
-    <input
-      type="url"
-      value="{{imageUrl}}"
-    />
+   <input type="file" name="animal-art-img" value="{{imageUrl}}"/>
   </label>
   <label>
     Title:

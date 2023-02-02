@@ -65,7 +65,14 @@ router.get("/post/:postId/edit", isLoggedIn, (req, res) => {
 
 router.post("/post/:postId/edit",fileUploader.single('animal-art-img'), (req, res) => {
   const { postId } = req.params;
-  const { title, artist, artistLink, imageUrl } = req.body;
+  const { title, artist, artistLink, existingImage } = req.body;
+ 
+  let imageUrl;
+  if (req.file) {
+    imageUrl = req.file.path;
+  } else {
+    imageUrl = existingImage;
+  }
   Post.findByIdAndUpdate(
     postId,
     { title, artist, artistLink, imageUrl },

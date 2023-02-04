@@ -63,7 +63,7 @@ router.post("/login", (req, res) => {
   User.findOne({ username }).then((user) => {
     if (!user) {
       res.render("auth/login", {
-        errorMessage: "User not found. No account associated with email",
+        errorMessage: "User not found.",
       });
     } else if (bcrypt.compareSync(password, user.password)) {
       req.session.currentUser = user.toObject();

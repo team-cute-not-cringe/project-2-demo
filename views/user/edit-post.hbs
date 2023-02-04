@@ -1,31 +1,38 @@
-<h2>Edit the post {{title}}</h2>
+<section class="signUp-container">
 
+<div><h2>Edit the post: <br><span>{{title}}</span></h2>
 <form action="/post/{{_id}}/edit" method="post" enctype="multipart/form-data">
-  <label>
-    Image Link:
-   <input type="file" name="animal-art-img" value="{{imageUrl}}"/>
-  </label>
-  <label>
-    Title:
+  
+    <label>
     <input type="text" name="title" value="{{title}}" />
   </label>
 
   <label>
-    Artist:
+    
     <input type="text" name="artist" value="{{artist}}" />
   </label>
 
   <label>
-    Link to Artist:
+    
     <input
       name="artistLink"
       value="{{artistLink}}"
     ></input>
   </label>
+<label>
+    
+   <input type="file" name="animal-art-img" value="{{imageUrl}}"/>
+  </label>
+ <div id="editPost-buttons">
+  <button type="submit" class="button">Save changes</button>
+  <form action="/post/{{_id}}/delete" method="POST">
+    <button type="submit" class="button">Delete Post</button></div>
+</form>
+</form>
 
-  <button type="submit">Save changes</button>
-  
-</form>
-<form action="/post/{{_id}}/delete" method="POST">
-    <button type="submit">Delete Post</button>
-</form>
+</div>
+<div>
+<img src="/images/whale_migration_by_snatti89_dcg5xaa-fullview.jpeg" alt="whale" class="signUp-img" id="login-img">
+{{!-- needs a route to get image from the the post we editing --}}
+</div>
+</section>

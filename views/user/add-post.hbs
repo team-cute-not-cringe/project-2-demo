@@ -1,21 +1,33 @@
-<form action="/add-post/create" method="POST" enctype="multipart/form-data">
-<label>
-    Title: 
-    <input type="text" name="title">
-</label>
-<br>
-<label>Artist: 
-    <input type="text" name="artist">
-</label>
-<br>
-<label>Link to Artist: 
-    <input type="url" name="artistLink">
-</label>
-<br>
-<label>Image Url: 
-    <input type="file" name="animal-art-img" />
-    {{!-- <input type="url" name="imageUrl"> --}}
-</label>
-<br>
-<button type="submit">Create a Post</button>
-</form>
+
+<section class="signUp-container">
+
+  <div>
+    <h2>Add Post</h2>
+    <form action="/add-post/create" method="POST" enctype="multipart/form-data">
+      <label>
+       
+        <input type="text" name="title" value="Title"/>
+      </label>
+    <br />
+      <label>
+        <input type="text" name="artist" value="Artist"/>
+      </label>
+    <br />
+      <label>
+        <input type="url" name="artistLink" value="Link to Artist"/>
+      </label>
+    <br />
+      <label>
+        <input type="file" name="animal-art-img" value="Image upload" />
+        {{! <input type="url" name="imageUrl"> }}
+      </label>
+    <br />
+      <button type="submit" class="button">Create a Post</button>
+    </form>
+  </div>
+
+  <div>
+    <img src="../images/whale_migration_by_snatti89_dcg5xaa-fullview.jpeg" alt="image" class="singUp-img" id="addPost-img" />
+  </div>
+ 
+</section>

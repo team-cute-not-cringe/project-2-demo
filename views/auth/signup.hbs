@@ -5,11 +5,11 @@
         <form action="/signup" method="POST">
 
         <label for="">
-        <input type="text" name="username" value="Username">
+        <input type="text" name="username" placeholder="Username">
         </label>
     <br>
         <label for="">
-        <input type="password" name="password" value="Password">
+        <input type="password" name="password" placeholder="Password">
         {{#if errorMessage}}
         <p class="error">{{errorMessage}}</p>
         {{/if}}

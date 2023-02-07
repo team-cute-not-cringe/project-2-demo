@@ -358,3 +358,42 @@ footer {
 .profile-button {
   min-width: 120px;
 }
+/* post-details */
+.postDetails-container div{
+  width: 50%;
+}
+.titleAndUser{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+#postDetails-img {
+  margin-left: 300px;
+}
+.info-div{
+  display: flex;
+  align-self: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-top: 200px;
+}
+/* .info-div p {
+  margin-bottom: 10px;
+} */
+.info-div h3 {
+  font-family: 'Yeseva One', cursive; 
+  font-size: 1.2rem;
+}
+.user-wrapper {
+  display: flex;
+  align-items: center;
+  width: 200px;
+}
+.user-wrapper p {
+  margin-left: 10px;
+}
+.user-wrapper img {
+  width: 30px;
+  height: 30px;
+}

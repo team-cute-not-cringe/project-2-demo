@@ -1,22 +1,24 @@
 <section class="userProfile">
-
-<div class="user-information">
-    <h3>Hello, {{userInSession.username}}!</h3>
-    <h5>It is {{username.username}}'s profile</h5>
-    <a href="/add-post/create">Add Post</a>
-</div>
-
-{{#each allPosts}} 
-<div class="card user-posts" style="width: 45rem;">
-  <img src="{{imageUrl}}" class="card-img-top" alt="image-alt-text">
-  <div class="card-body">
-     <p>Title: {{title}}</p>
-     <p>Artist: <a href="{{artistLink}}">{{artist}}</a></p>
-    <p class="card-text">User: <a href=""> {{user.username}}</a></p>
-    <a href="/post/{{_id}}" class="btn btn-primary">Post Detail</a>
+  <div class="user-container">
+    {{#each allPosts}}
+      <div class="user-post">
+        <a href="/post/{{_id}}">
+            <img src="{{imageUrl}}" class="profile-img" alt="image-alt-text">
+            <div class="overlay">
+              <p>{{title}}</p>
+              <p>{{artist}}</p>
+            </div>
+        </a>
+      </div>
+    {{/each}}
   </div>
-</div>
-{{/each}}
-</div>
+  <div class="user-information">
+    <div class="user-details">
+      <img src="#" alt="" class="user-img" />
+      <h3>Hello, {{userInSession.username}}!</h3>
+    </div>
+    <h5>It is {{username.username}}'s profile</h5>
+    <button class="button profile-button"><a href="/add-post/create">Add Post</a></button>
+  </div>
 
 </section>

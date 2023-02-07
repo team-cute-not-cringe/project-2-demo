@@ -208,11 +208,6 @@ footer {
   font-size: 1.1rem;
 }
 
-.userProfile {
-  position: relative;
-  margin-top: 100px;
-  margin-bottom: 30px;
-}
 #editPost-buttons {
   display: flex;
   flex-direction: row;
@@ -232,45 +227,134 @@ footer {
   margin-top: 60px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+.gallery-container h1 {
+  width: 80%;
+  margin: 30px auto 30px auto;
 }
 .all-posts {
   display: grid;
-  gap: 20px 100px;
-  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+  width: 80%;
+  margin: auto;
+  background-color: rgba(157, 129, 137, 0.3);
+  padding: 20px;
 }
 
 .gallery-img {
-  height: 300px;
-}
-
-.gallery-body button {
-  min-width: 80px;
-  height: 35px;
-}
-
-.gallery-post a{
-  display: block;
   position: relative;
-  height: 100%;
-  width: max-content;
+  height: 300px;
+  display: block;
+  background-size: cover;
+  /* width: 100%; */
+  background-color: white;
 }
 
-.post-hover{
-visibility: hidden;
+.gallery-post {
+  position: relative;
 }
 
-.post-hover:hover{
-  visibility: visible;
+.overlay {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-bottom: 20px;
   position: absolute;
-  color: white;
-  bottom: 0; 
-  background: linear-gradient(360deg, black, transparent);
-  width: 100% ;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: black;
+  background: linear-gradient(
+    180deg,
+    rgba(189, 224, 254, 1) 0%,
+    rgba(162, 210, 255, 1) 2%,
+    rgba(0, 0, 0, 1) 100%
+  );
   height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+
+.overlay:hover {
+  opacity: 0.6;
+}
+
+.overlay p {
+  color: white;
+  position: relative;
+  left: 20px;
+  bottom: 20px;
+  opacity: 1;
+}
+
+/* Profile Page */
+
+.userProfile {
+  display: flex;
+  width: 80%;
+  margin: 100px auto 30px auto;
+  height: 100%;
+  background-color: rgba(157, 129, 137, 0.3);
+  padding-right: 60px;
+}
+
+.user-container {
+  display: grid;
+  gap: 20px 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 200px 200px;
+  width: 60%;
+  padding: 20px 40px 20px 60px;
+}
+
+.profile-img {
+  position: relative;
+  height: 200px;
+  display: block;
+  background-size: cover;
+  background-color: white;
+}
+.user-post {
+  position: relative;
+}
+.user-information {
+  padding: 20px;
+  background-color: white;
+  height: 160px;
+  width: 30%;
+  margin-top: 20px;
+}
+
+.user-information h5 {
+  margin: 20px 0;
+}
+.user-information p {
+  margin: 10px 0;
+}
+.user-img {
+  width: 50px;
+  height: 50px;
+  background-color: grey;
+  border-radius: 50%;
+}
+
+.user-details {
+  display: flex;
+  align-items: center;
+}
+.user-details h3 {
+  margin-left: 15px;
+  font-family: "Yeseva One", cursive;
+  font-size: 1.2rem;
+}
+.user-information h5 {
+  font-family: "Outfit", sans-serif;
+  font-size: 1rem;
+}
+
+.profile-button {
+  min-width: 120px;
 }

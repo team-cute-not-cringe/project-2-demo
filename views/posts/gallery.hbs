@@ -3,20 +3,14 @@
 <div class="all-posts">
 {{#each allPosts}}
 <div class="gallery-post">
-  <a href="/post/{{_id}}"><img src="{{imageUrl}}" class="gallery-img" alt="image-alt-text">
-  <div class="post-hover">
+  <a href="/post/{{_id}}">
+  <img src="{{imageUrl}}" class="gallery-img" alt="image-alt-text"> 
+  <div class="overlay">
     <p>{{title}}</p>
     <p>{{artist}}</p>
   </div>
   </a>
-  
 </div>
-{{!-- <div>
-    <img src="{{imageUrl}}" alt="image-alt-text">
-    <p>Title: {{title}}</p>
-    <p>Artist: <a href="{{artistLink}}">{{artist}}</a></p>   
-    <a href="/post/{{_id}}">Post Detail</a>
-</div> --}}
 {{/each}}
 </div>
 </section>

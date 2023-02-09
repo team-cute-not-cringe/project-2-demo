@@ -46,12 +46,14 @@ h1 {
   display: flex;
   justify-content: center;
   flex-direction: row;
+  align-items: center;
   background-color: white;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  padding-top: 20px;
+  padding: 15px;
+  
   font-family: "Outfit", sans-serif;
   font-size: 1.1rem;
 }
@@ -61,8 +63,9 @@ h1 {
   text-align: center;
 }
 #logo {
-  height: 50px;
+  height: 30px;
   object-fit: contain;
+  
 }
 nav a,
 nav ul {
@@ -149,6 +152,9 @@ h1 {
 .button a :hover {
   color: rgb(216, 226, 220);
   text-decoration: none;
+}
+.button-delete {
+  min-width: 120px;
 }
 
 footer {
@@ -237,20 +243,23 @@ footer {
   display: grid;
   gap: 20px 20px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   width: 80%;
   margin: auto;
   background-color: rgba(157, 129, 137, 0.3);
   padding: 20px;
+
 }
 
 .gallery-img {
   position: relative;
   height: 300px;
+  width: 100%;
   display: block;
   background-size: cover;
   /* width: 100%; */
   background-color: white;
+  object-fit: cover;
 }
 
 .gallery-post {
@@ -313,9 +322,11 @@ footer {
 .profile-img {
   position: relative;
   height: 200px;
+  width: 100%;
   display: block;
   background-size: cover;
   background-color: white;
+  object-fit: cover;
 }
 .user-post {
   position: relative;

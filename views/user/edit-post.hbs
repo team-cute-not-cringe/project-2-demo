@@ -25,14 +25,14 @@
   </label>
  <div id="editPost-buttons">
   <button type="submit" class="button">Save changes</button>
-  <form action="/post/{{_id}}/delete" method="POST">
-    <button type="submit" class="button">Delete Post</button></div>
+ </div>
 </form>
+ <form action="/post/{{_id}}/delete" method="POST">
+    <button type="submit" class="button button-delete">Delete Post</button>
 </form>
-
 </div>
 <div>
-<img src="/images/whale_migration_by_snatti89_dcg5xaa-fullview.jpeg" alt="whale" class="signUp-img" id="login-img">
+<img src="{{imageUrl}}" alt="whale" class="signUp-img" id="login-img">
 {{!-- needs a route to get image from the the post we editing --}}
 </div>
 </section>

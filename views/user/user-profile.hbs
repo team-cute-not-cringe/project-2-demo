@@ -1,0 +1,24 @@
+<section class="userProfile">
+  <div class="user-container">
+    {{#each allPosts}}
+      <div class="user-post">
+        <a href="/post/{{_id}}">
+            <img src="{{imageUrl}}" class="profile-img" alt="image-alt-text">
+            <div class="overlay">
+              <p>{{title}}</p>
+              <p>{{artist}}</p>
+            </div>
+        </a>
+      </div>
+    {{/each}}
+  </div>
+  <div class="user-information">
+    <div class="user-details">
+      <img src="https://www.pngitem.com/pimgs/m/146-1468281_profile-icon-png-transparent-profile-picture-icon-png.png" alt="user" class="user-img" />
+      <h3>Hello, {{userInSession.username}}!</h3>
+    </div>
+    <h5>It is {{username.username}}'s profile</h5>
+    <button class="button profile-button"><a href="/add-post/create">Add Post</a></button>
+  </div>
+
+</section>

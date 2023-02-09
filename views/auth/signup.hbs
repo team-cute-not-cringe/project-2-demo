@@ -1,1 +1,25 @@
-<h1>Sign up here</h1>
+<section class="signUp-container">
+    <div>
+        <h2>Sign up here</h2>
+
+        <form action="/signup" method="POST">
+
+        <label for="">
+        <input type="text" name="username" placeholder="Username">
+        </label>
+    <br>
+        <label for="">
+        <input type="password" name="password" placeholder="Password">
+        {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+        {{/if}}
+        </label>
+    <br>
+        <button type="submit" class="button">Sign Up</button>
+
+    </form>
+</div>
+<div>
+    <img src="./images/junicorn_5__27th_by_juliabeutling_da83pcp-fullview.jpeg" alt="animal-art" class="singUp-img">
+</div>
+</section>

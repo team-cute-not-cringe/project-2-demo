@@ -17,13 +17,15 @@ const postSchema = new Schema({
   imageUrl: {
     type: String,
     required: true,
-  }, //=> cloudinary / online source,
-//   comments: [
-//     {
-//       message: String,
-//       user: { type: Schema.Types.ObjectId, ref: "User" },
-//     },
-//   ],
+  },
+  owner:Boolean,
+  comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }], 
+  // comments: [
+  //   {
+  //     message: String,
+  //     author: { type: Schema.Types.ObjectId, ref: "User" },
+  //   },
+  // ]
 }); // maybe implement animal tags for a search function?
 
 const Post = model("Post", postSchema);

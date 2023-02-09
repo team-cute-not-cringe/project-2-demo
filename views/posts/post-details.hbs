@@ -1,0 +1,58 @@
+<section class="postDetails-container signUp-container">
+
+  <div>
+    <img
+      src="{{imageUrl}}"
+      alt="image-alt-text"
+      class="singUp-img"
+      id="postDetails-img"
+    />
+  </div>
+
+  <div class="info-div">
+    <div class="titleAndUser">
+      <h3> {{title}}</h3>
+      <div class="user-wrapper">
+        <img
+          src="https://www.pngitem.com/pimgs/m/146-1468281_profile-icon-png-transparent-profile-picture-icon-png.png"
+          alt="user"
+          class="user-img"
+        />
+        <p>posted by:<a href="/profile/{{user._id}}">{{user.username}}</a></p>
+      </div>
+    </div>
+
+    <p>Artist: <a href="{{artistLink}}">{{artist}}</a></p>
+    {{!-- <p>User: <a href="/profile/{{user._id}}">{{user.username}}</a></p> --}}
+    {{#if owner}}
+      <button class="button"><a href="/post/{{_id}}/edit">Edit Post</a></button>
+    {{/if}}
+
+    <div class="new-comment">
+    <h3>Add a comment:</h3>
+    <form action="/post/{{_id}}/comment" method="post">
+      <textarea name="message" cols="30" rows="2"></textarea>
+      <br/>
+      <button class="button" type="submit">Comment</button>
+    </form>
+
+    </div>
+
+    <div class="all-comments">
+      {{#each comments}}
+      
+        <div class="comment-box">
+          <div><h4>{{author.username}} says:</h4>
+          <p>{{message}}</p></div>
+
+          {{#if owner}}
+          <form action="/comment/{{_id}}/delete" method="POST">
+          <button type="submit"><img class="delete-icon"src="../images/bin.png" alt=""></button>
+          </form>
+          {{/if}}
+        </div>
+      {{/each}}
+    </div>
+  </div>
+
+</section>

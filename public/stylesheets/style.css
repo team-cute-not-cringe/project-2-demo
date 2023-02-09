@@ -1,12 +1,460 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+/* font-family: 'Alata', sans-serif;
+font-family: 'Outfit', sans-serif;
+font-family: 'Yeseva One', cursive; */
+/* purple: 205, 180, 219
+light-pink: 255, 200, 221
+pink: 255, 175, 204
+light-blue: 189, 224, 254
+blue: 162, 210, 255
+
+Second Palette
+brown: 157, 129, 137;
+pink: 244, 172, 183
+light-pink: 255, 202, 212
+yellow: 255, 229, 217
+green: 216, 226, 220
+
+*/
+hr {
+  width: 80%;
+  border-width: 6px;
+  margin-top: 100px;
+}
+p {
+  font-family: "Outfit", sans-serif;
+}
+
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00b7ff;
+  color: rgb(157, 129, 137);
+}
+a:hover {
+  color: rgb(216, 226, 220);
 }
 
 h1 {
   color: 15px;
+}
+.nav-bar {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding-top: 20px;
+  font-family: "Outfit", sans-serif;
+  font-size: 1.1rem;
+}
+
+.nav-bar ul li {
+  float: left;
+  text-align: center;
+}
+#logo {
+  height: 50px;
+  object-fit: contain;
+}
+nav a,
+nav ul {
+  text-decoration: none;
+  list-style-type: none;
+  margin: auto 20px;
+  display: block;
+  color: rgb(157, 129, 137);
+}
+
+#nav-bar-div li a:hover {
+  color: rgb(216, 226, 220);
+  text-decoration: underline;
+}
+#nav-bar-div li button:hover {
+  color: rgb(216, 226, 220);
+  text-decoration: underline;
+}
+
+/* Home Page */
+header {
+  position: relative;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+header::before {
+  content: "";
+  background-image: url("../images/Large_pinksheepfull.jpeg");
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.75;
+  z-index: 0;
+}
+
+.header-info {
+  opacity: 100%;
+  position: relative;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header-info > p {
+  font-size: 1.3rem;
+  margin-top: 20px;
+  margin-bottom: 35px;
+}
+
+h1 {
+  font-family: "Yeseva One", cursive;
+  letter-spacing: 4px;
+  font-size: 3rem;
+  width: 60%;
+}
+
+.button {
+  text-decoration: none;
+  background-color: rgb(205, 180, 219);
+  color: black;
+  height: 50px;
+  min-width: 180px;
+  border-style: none;
+  font-family: "Outfit", sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 10px;
+}
+.button a {
+  text-decoration: none;
+  color: black;
+  padding: 0 30px;
+}
+.button:hover {
+  color: rgb(216, 226, 220);
+}
+.button a:hover {
+  color: rgb(216, 226, 220);
+  text-decoration: none;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: rgb(157, 129, 137);
+  background-color: white;
+  z-index: 1000;
+  padding-bottom: 7px;
+}
+
+/* //signup page\\ */
+
+.signUp-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.signUp-container input {
+  margin: 10px auto;
+  padding: 10px 15px;
+  padding-right: 40px;
+  width: 70%;
+}
+.signUp-container div h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-family: "Yeseva One", cursive;
+  letter-spacing: 2px;
+}
+.signUp-container button {
+  margin-top: 15px;
+}
+.signUp-container div {
+  width: 30%;
+}
+
+.signUp-container .singUp-img {
+  height: 50%;
+}
+#login-img {
+  height: 50%;
+}
+
+/* //user-logedin\\ */
+.logout-button {
+  border-style: none;
+  color: rgb(157, 129, 137);
+  background-color: white;
+  font-family: "Outfit", sans-serif;
+  margin: auto 20px;
+  font-size: 1.1rem;
+}
+
+#editPost-buttons {
+  display: flex;
+  flex-direction: row;
+}
+#editPost-buttons button {
+  /* height: 30px; */
+  min-width: 120px;
+  margin-right: 15px;
+}
+.signUp-container h2 span {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: rgb(157, 129, 137);
+}
+/* Gallery Page */
+.gallery-container {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-container h1 {
+  width: 80%;
+  margin: 30px auto 30px auto;
+}
+.all-posts {
+  display: grid;
+  gap: 20px 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 80%;
+  margin: auto;
+  background-color: rgba(157, 129, 137, 0.3);
+  padding: 20px;
+}
+
+.gallery-img {
+  position: relative;
+  height: 300px;
+  display: block;
+  background-size: cover;
+  /* width: 100%; */
+  background-color: white;
+}
+
+.gallery-post {
+  position: relative;
+}
+
+.overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: black;
+  background: linear-gradient(
+    180deg,
+    rgba(189, 224, 254, 1) 0%,
+    rgba(162, 210, 255, 1) 2%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+
+.overlay:hover {
+  opacity: 0.6;
+}
+
+.overlay p {
+  color: white;
+  position: relative;
+  left: 20px;
+  bottom: 20px;
+  opacity: 1;
+}
+
+/* Profile Page */
+
+.userProfile {
+  display: flex;
+  width: 80%;
+  margin: 100px auto 30px auto;
+  height: 100%;
+  background-color: rgba(157, 129, 137, 0.3);
+  padding-right: 60px;
+}
+
+.user-container {
+  display: grid;
+  gap: 20px 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 200px 200px;
+  width: 60%;
+  padding: 20px 40px 20px 60px;
+}
+
+.profile-img {
+  position: relative;
+  height: 200px;
+  display: block;
+  background-size: cover;
+  background-color: white;
+}
+.user-post {
+  position: relative;
+}
+.user-information {
+  padding: 20px;
+  background-color: white;
+  height: 160px;
+  width: 30%;
+  margin-top: 20px;
+}
+
+.user-information h5 {
+  margin: 20px 0;
+}
+.user-information p {
+  margin: 10px 0;
+}
+.user-img {
+  width: 50px;
+  height: 50px;
+  background-color: grey;
+  border-radius: 50%;
+}
+
+.user-details {
+  display: flex;
+  align-items: center;
+}
+.user-details h3 {
+  margin-left: 15px;
+  font-family: "Yeseva One", cursive;
+  font-size: 1.2rem;
+}
+.user-information h5 {
+  font-family: "Outfit", sans-serif;
+  font-size: 1rem;
+}
+
+.profile-button {
+  min-width: 120px;
+}
+/* post-details */
+
+.postDetails-container div {
+  width: 50%;
+}
+.titleAndUser {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+#postDetails-img {
+  margin-left: 300px;
+}
+.info-div {
+  display: flex;
+  align-self: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-top: 200px;
+}
+/* .info-div p {
+  margin-bottom: 10px;
+} */
+.info-div h3 {
+  font-family: "Yeseva One", cursive;
+  font-size: 1.2rem;
+}
+.user-wrapper {
+  display: flex;
+  align-items: center;
+  width: 200px;
+}
+.user-wrapper p {
+  margin-left: 10px;
+}
+.user-wrapper img {
+  width: 30px;
+  height: 30px;
+}
+
+.all-comments {
+  overflow-y: scroll;
+  max-height: 250px;
+}
+.comment-box {
+  border: rgb(162, 210, 255) solid 2px;
+  border-radius: 5px;
+  padding: 10px 20px 20px 20px;
+  margin-bottom: 20px;
+  width: 300px !important;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-box h4 {
+  margin-bottom: 10px;
+}
+
+.new-comment {
+  margin: 20px 0;
+}
+
+.new-comment textarea {
+  resize: none;
+  width: 340px;
+  padding: 10px 20px 20px 20px;
+  margin: 0;
+}
+
+.new-comment h3 {
+  margin-bottom: 20px;
+}
+
+.delete-icon {
+  width: 20px !important;
+  height: 20px;
+  background-color: rgb(244, 172, 183);
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.delete-icon:hover{
+  background-color: rgb(255, 200, 221);
+}
+
+.comment-box button {
+  border-style: none;
+  margin-top: 0;
+  background-color: transparent;
+}
+
+.comment-box form {
+  display: flex;
+  justify-content: center;
 }

@@ -1,0 +1,26 @@
+<section class="signUp-container">
+    <div> 
+        <h2>Login here</h2>
+        <form action="/login" method="POST">
+
+        <label for="">
+        <input type="text" name="username" placeholder="Username">
+        </label>
+
+    <br>
+        <label for="">
+        <input type="password" name="password" placeholder="Password">
+        {{#if errorMessage}}
+         <p class="error">{{errorMessage}}</p>
+        {{/if}}
+        </label>
+    <br>
+        <button type="submit" class="button">Login</button>
+    
+        </form>
+        </div> 
+
+    <div>
+    <img src="./images/junicorn_5__27th_by_juliabeutling_da83pcp-fullview.jpeg" alt="animal-art" class="signUp-img" id="login-img">
+    </div>
+</section>

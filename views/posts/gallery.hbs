@@ -1,0 +1,16 @@
+<section class="gallery-container">
+<h1>Gallery</h1>
+<div class="all-posts">
+{{#each allPosts}}
+<div class="gallery-post">
+  <a href="/post/{{_id}}">
+  <img src="{{imageUrl}}" class="gallery-img" alt="image-alt-text"> 
+  <div class="overlay">
+    <p>{{title}}</p>
+    <p>{{artist}}</p>
+  </div>
+  </a>
+</div>
+{{/each}}
+</div>
+</section>

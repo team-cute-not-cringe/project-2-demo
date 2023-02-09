@@ -1,0 +1,33 @@
+
+<section class="signUp-container">
+
+  <div>
+    <h2>Add Post</h2>
+    <form action="/add-post/create" method="POST" enctype="multipart/form-data">
+      <label>
+       
+        <input type="text" name="title" placeholder="Title"/>
+      </label>
+    <br />
+      <label>
+        <input type="text" name="artist" placeholder="Artist"/>
+      </label>
+    <br />
+      <label>
+        <input type="url" name="artistLink" placeholder="Link to Artist"/>
+      </label>
+    <br />
+      <label>
+        <input type="file" name="animal-art-img" placeholder="Image upload" />
+        {{! <input type="url" name="imageUrl"> }}
+      </label>
+    <br />
+      <button type="submit" class="button">Create a Post</button>
+    </form>
+  </div>
+
+  <div>
+    <img src="../images/whale_migration_by_snatti89_dcg5xaa-fullview.jpeg" alt="image" class="singUp-img" id="addPost-img" />
+  </div>
+ 
+</section>

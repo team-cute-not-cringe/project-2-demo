@@ -4,7 +4,7 @@ const router = express.Router();
 const { isLoggedIn, isLoggedOut } = require("../middleware/path.guard");
 const User = require("../models/User.model");
 const fileUploader = require('../config/cloudinary.config');
-
+const Comment = require("../models/Comment.model");
 //Gallery Page
 router.get("/gallery", (req, res) => {
     // console.log('in the gallery')
@@ -43,12 +43,21 @@ router.post("/add-post/create",fileUploader.single('animal-art-img'), (req, res)
 router.get("/post/:postId", (req, res) => {
   const { postId } = req.params;
   Post.findById(postId)
-  .populate("user")
+  .populate("user comments")
+  .populate({
+    // we are populating author in the previously populated comments
+    path: 'comments',
+    populate: {
+      path: 'author',
+      model: 'User'
+    }
+  })
     .then((postToEdit) => {
         if(req.session.currentUser.username === postToEdit.user.username){
             postToEdit.owner = true
-
-        }
+            postToEdit.comments.forEach(comment => comment.owner = true)
+        } 
+        console.log(postToEdit.comments[0])
       res.render("posts/post-details", postToEdit);
     })
     .catch((err) => console.log(`This is a post-detail error: ${err}`));
@@ -94,5 +103,40 @@ router.post("/post/:postId/delete", (req, res) => {
     })
     .catch((error) => console.log(`There is a delete error: ${error}`));
 });
+
+router.post('/post/:postId/comment', (req,res) => {
+  const {postId} = req.params;
+  const { message } = req.body;
+
+  Post.findById(postId)
+  .then(dbPost => {
+    let newComment;
+    if(!message){
+      res.redirect(`/post/${postId}`)
+      return 
+    }
+
+    newComment = new Comment({ author: req.session.currentUser, message});
+
+    newComment
+    .save()
+    .then(dbComment => {
+      dbPost.comments.push(dbComment._id);
+      dbPost
+        .save()      
+        .then(updatedPost => res.redirect(`/post/${updatedPost._id}`))
+    });
+  });
+})
+
+router.post('/comment/:commentId/delete', (req,res) => {
+  const { commentId } = req.params;
+  Comment.findByIdAndDelete(commentId)
+    .then(() => {
+      res.redirect("/gallery");
+    })
+    .catch((error) => console.log(`There is a delete error: ${error}`));
+})
+
 
 module.exports = router;

@@ -59,6 +59,12 @@ router.get("/login", isLoggedOut, (req, res) => {
 
 router.post("/login", (req, res) => {
   const { username, password } = req.body;
+  if (!username || !password) {
+    res.render("auth/login", {
+      errorMessage: "Please fill required fields! Meow!",
+    });
+    return;
+  }
   //add validation if user entered both username & password
   User.findOne({ username }).then((user) => {
     if (!user) {

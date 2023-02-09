@@ -133,7 +133,7 @@ router.post('/comment/:commentId/delete', (req,res) => {
   const { commentId } = req.params;
   Comment.findByIdAndDelete(commentId)
     .then(() => {
-      res.redirect("/gallery");
+      res.redirect('back');
     })
     .catch((error) => console.log(`There is a delete error: ${error}`));
 })
